@@ -1,0 +1,41 @@
+<template>
+    <style type="text/css">
+      body {
+        background-color: #DADADA;
+      }
+  
+      #loginContent {
+        height: 100% !important;
+        -webkit-animation: fadeInRight 0.5s;
+        animation: fadeInRight 0.5s;
+        animation-timing-function: cubic-bezier(.07,.39,.29,.98);
+      }
+    </style>
+  
+    <div class="ui middle aligned center aligned grid animated" id="loginContent">
+      <div class="column" style="max-width: 400px;">
+        <form class="ui large form" submit.delegate="login()">
+          <div class="ui green raised segment">
+            <a ui-button class="inverted big green" href="/auth/google"><i class="google plus icon"></i> Login With Google</a>
+            <div class="ui horizontal green divider">
+              <h2 class="ui green header">OR</h2>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="user green icon"></i>
+                <input type="text" name="email" value.bind="email" placeholder="eMail/Username" required>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="lock green icon"></i>
+                <input type="password" name="password" value.bind="password" placeholder="Password" required>
+              </div>
+            </div>
+            <button type="submit" class="ui button green big inverted"><i class="ui icon sign in"></i>Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+  </template>

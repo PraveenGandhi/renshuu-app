@@ -1,0 +1,28 @@
+<template>
+  <section class="au-animate">
+    <div class="ui segment"id="view">
+      <div ui-message="" if.bind="error" class="negative animated slideInDown">
+        <i class="close icon"></i>
+        <div class="header">
+          Input Errors
+        </div>
+        <p>Input data is missing or invalid!</p>
+      </div>
+      <form class="ui form">
+          <div class="three fields">
+        <form-control name="name" value.bind="entity.name" label="Name" required="true"></form-control>
+        <form-control name="meaning" value.bind="entity.meaning" label="Meaning" required="true"></form-control>
+        <form-control name="furigana" value.bind="entity.furigana" label="Reading" required="true"></form-control>
+      </div>
+
+        <form-control name="example1" value.bind="entity.example1" label="Example1"></form-control>
+        <form-control name="example2" value.bind="entity.example2" label="Example2"></form-control>
+        <form-control name="example3" value.bind="entity.example3" label="Example3"></form-control>
+        <form-control name="example4" value.bind="entity.example4" label="Example4"></form-control>
+        <form-control name="example5" value.bind="entity.example5" label="Example5"></form-control>
+        <button type="button" class="ui submit fluid button green" click.trigger="submit()">
+          <i class="send icon"></i>Add</button>
+      </form>
+    </div>
+  </section>
+</template>

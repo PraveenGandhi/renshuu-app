@@ -1,0 +1,30 @@
+<template>
+    <div id="view">
+      <div class="ui segment">
+        <h1>${word.name}</h1>
+        <div class="ui cards">
+        <div class="ui card">
+          <div class="content">
+            <a class="header">${word.name}</a>
+            <div class="meta">
+              <span class="date">${word.furigana}</span>
+            </div>
+            <div class="description">
+              <p>${word.example1}</p>
+              <p>${word.example2}</p>
+              <p>${word.example3}</p>
+              <p>${word.example4}</p>
+              <p>${word.example5}</p>
+              <hr>
+              <p repeat.for="w of word.wd">${w.name}</p>
+            </div>
+            <div class="extra content">
+              ${word.meaning}
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  
