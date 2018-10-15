@@ -4,7 +4,7 @@ import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
 
 @autoinject()
 export class List {
-
+  isLoading=false;
   words :any;
   subscriber:Subscription;
   constructor(private wordsService:WordsService, private ea:EventAggregator){}
@@ -22,8 +22,10 @@ export class List {
   }
   attached(){
     this.subscriber = this.ea.subscribe('sortingChanged', data => {
+      this.isLoading=true;
       this.wordsService.find({query: {$sort: data}}).then((d)=>{
         this.words = d;
+        this.isLoading=false;
       });
     });
   }

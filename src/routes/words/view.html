@@ -1,29 +1,13 @@
 <template>
   <div id="view">
-    <div class="ui segment">
+    <div class="ui pink raised segment">
       <h1>${word._id}</h1>
-      <div class="ui cards">
-        <div class="ui card">
-          <div class="content">
-            <a class="header">${word._id}</a>
-            <div class="meta">
-              <span class="date">${word.furigana}</span>
-            </div>
-            <div class="description">
-              <div markdown.bind="word.examples"></div>
-              <hr>
-              <p repeat.for="w of word.wd">${w.name}</p>
-            </div>
-            <div class="extra content">
-              ${word.meaning}
-            </div>
-          </div>
-          <div class="extra content">
-            <button class="negative ui button" click.delegate="delete()">Delete</button>
-            <a class="ui button" route-href="route: edit; params.bind: { id: word._id }">Edit</a>
-          </div>
-        </div>
-      </div>
+      <p >${word.furigana}</p>
+      <p>${word.meaning}</p>
+      <div markdown.bind="word.examples"></div>
+      <hr>
+      <button class="negative ui button" click.delegate="delete()">Delete</button>
+      <a class="ui button" route-href="route: edit; params.bind: { id: word._id }">Edit</a>
     </div>
   </div>
 </template>
