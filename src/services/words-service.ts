@@ -18,4 +18,8 @@ export class WordsService {
             callback(message);
         });
     }
+
+    delete(id:any):Promise<any>{
+        return this.feathers.client.service('word-groups').remove(id);
+    }
 }

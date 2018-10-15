@@ -11,6 +11,7 @@ export class List {
     this.wordsService.onCreated(word=>{
       console.log('word created');
       console.log(word);
+      this.words.data.push(word);
     });
     return this.wordsService.find({}).then((d)=>{
       this.words = d;

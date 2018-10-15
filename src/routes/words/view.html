@@ -1,8 +1,8 @@
 <template>
-    <div id="view">
-      <div class="ui segment">
-        <h1>${word.name}</h1>
-        <div class="ui cards">
+  <div id="view">
+    <div class="ui segment">
+      <h1>${word.name}</h1>
+      <div class="ui cards">
         <div class="ui card">
           <div class="content">
             <a class="header">${word.name}</a>
@@ -22,9 +22,11 @@
               ${word.meaning}
             </div>
           </div>
-        </div>
+          <div class="extra content">
+            <button class="negative ui button" click.delegate="delete()">Delete</button>
+          </div>
         </div>
       </div>
     </div>
-  </template>
-  
+  </div>
+</template>
