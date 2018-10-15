@@ -10,11 +10,7 @@
               <span class="date">${word.furigana}</span>
             </div>
             <div class="description">
-              <p>${word.example1}</p>
-              <p>${word.example2}</p>
-              <p>${word.example3}</p>
-              <p>${word.example4}</p>
-              <p>${word.example5}</p>
+              <div markdown.bind="word.examples"></div>
               <hr>
               <p repeat.for="w of word.wd">${w.name}</p>
             </div>
@@ -24,6 +20,7 @@
           </div>
           <div class="extra content">
             <button class="negative ui button" click.delegate="delete()">Delete</button>
+            <a class="ui button" route-href="route: edit; params.bind: { id: word._id }">Edit</a>
           </div>
         </div>
       </div>

@@ -81,7 +81,8 @@ let run = (production) => {
         + aurelia-templating-router
         + aurelia-semantic-ui
         + jquery-nicescroll
-        + socket-io-client`)
+        + socket-io-client
+        + showdown`)
         .alias({
             'jQuery': 'jquery'
         })

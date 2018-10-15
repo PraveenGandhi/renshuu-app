@@ -3,23 +3,30 @@ import { autoinject } from 'aurelia-framework';
 
 @autoinject()
 export class WordsService {
-    constructor(private feathers:FeathersApi){}
+    service:any;
+    constructor(feathers:FeathersApi){
+        this.service = feathers.client.service('word-groups')
+    }
 
     find(criteria:any):Promise<any>{
-        return this.feathers.client.service('word-groups').find(criteria);
+        return this.service.find(criteria);
     }
 
     save(word:any):Promise<any>{
-        return this.feathers.client.service('word-groups').create(word);
+        return this.service.create(word);
+    }
+
+    update(word:any):Promise<any>{
+        return this.service.update(word._id,word);
     }
 
     onCreated(callback:Function){
-        this.feathers.client.service('word-groups').on('created',message=>{
+        this.service.on('created',message=>{
             callback(message);
         });
     }
 
     delete(id:any):Promise<any>{
-        return this.feathers.client.service('word-groups').remove(id);
+        return this.service.remove(id);
     }
 }

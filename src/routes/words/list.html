@@ -5,16 +5,12 @@
       <div class="ui cards">
       <div repeat.for="word of words.data" class="ui card">
         <div class="content">
-          <a class="header" route-href="route: details; params.bind: { id: word.name }">${word.name}</a>
+          <a class="header" route-href="route: details; params.bind: { id: word._id }">${word.name}</a>
           <div class="meta">
             <span class="date">${word.furigana}</span>
           </div>
           <div class="description">
-            <p>${word.example1}</p>
-            <p>${word.example2}</p>
-            <p>${word.example3}</p>
-            <p>${word.example4}</p>
-            <p>${word.example5}</p>
+            <div markdown.bind="word.examples"></div>
             <hr>
             <p>${word.tags}</p>
           </div>
