@@ -9,7 +9,7 @@ export class Edit {
   constructor(private wordsService: WordsService, private router: Router) {}
 
   async activate(params: any) {
-    return this.wordsService.find({query: {name:params.id}}).then((d)=>{
+    return this.wordsService.find({query: {_id:params.id}}).then((d)=>{
       this.word = d.data[0];
     });
   }

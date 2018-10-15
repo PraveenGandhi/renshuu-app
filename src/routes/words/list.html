@@ -1,25 +1,22 @@
 <template>
   <div id="view">
     <div class="ui segment">
-      <h1>Words</h1>
-      <div class="ui cards">
-      <div repeat.for="word of words.data" class="ui card">
-        <div class="content">
-          <a class="header" route-href="route: details; params.bind: { id: word._id }">${word.name}</a>
-          <div class="meta">
-            <span class="date">${word.furigana}</span>
-          </div>
-          <div class="description">
-            <div markdown.bind="word.examples"></div>
-            <hr>
-            <p>${word.tags}</p>
-          </div>
-          <div class="extra content">
-            ${word.meaning}
-          </div>
-        </div>
-      </div>
-      </div>
+      <table class="striped celled sortable selectable very compact green"  ui-table>
+        <thead>
+        <th sortable="_id">Word</th>
+        <th sortable="meaning">Meaning</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+        <tr repeat.for="obj of words.data">
+          <td><a class="btn btn-xs" route-href="route: details; params.bind: { id: obj._id }">${obj._id}</a></td>
+          <td>${obj.meaning}</td>
+          <td>
+            <a class="btn btn-xs" route-href="route: details; params.bind: { id: obj._id }"><i class="edit icon" data-content="Edit"></i></a>
+            <a class="btn btn-xs" route-href="route: details; params.bind: { id: obj._id }"><i class="trash alternate outline icon red" data-content="Delete"></i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-  </div>
 </template>

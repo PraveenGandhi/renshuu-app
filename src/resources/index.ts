@@ -3,6 +3,7 @@ export function configure(config) {
       './elements/loader.html',
       './elements/form-control',
       './elements/form-submit',
-      './attributes/markdown'
+      './attributes/markdown',
+      './attributes/sortable'
   ]);
 }
