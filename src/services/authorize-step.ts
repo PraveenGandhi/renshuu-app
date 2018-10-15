@@ -1,16 +1,13 @@
-import { Redirect } from 'aurelia-router';
+import { Redirect, Next } from 'aurelia-router';
 import { Auth } from './auth';
+import { autoinject } from 'aurelia-framework';
 
+@autoinject()
 export class AuthorizeStep {
 
-  static inject = [Auth];
-  auth: any;
+  constructor(private auth:Auth) {}
 
-  constructor(auth) {
-    this.auth = auth;
-  }
-
-  run(routingContext, next) {
+  run(routingContext, next:Next) {
 
     const isLoggedIn = this.auth.isAuthenticated();
     const loginRoute = this.auth.getLoginRoute();

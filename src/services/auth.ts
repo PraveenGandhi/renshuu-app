@@ -1,13 +1,10 @@
-import { Feathers } from './feathers';
+import { FeathersApi } from './feathers-api';
+import { autoinject } from 'aurelia-framework';
 
+@autoinject()
 export class Auth {
 
-  static inject = [Feathers];
-  rest: Feathers;
-
-  constructor(rest) {
-    this.rest = rest;
-  }
+  constructor(private rest:FeathersApi) {}
 
   login(email,password):Promise<any>{
     return this.rest.client.authenticate({
@@ -15,6 +12,10 @@ export class Auth {
       "email":email,
       "password":password 
     });
+  }
+
+  authenticateByJWT():Promise<any>{
+    return this.rest.client.authenticate();
   }
 
   logout():Promise<any>{
@@ -26,7 +27,7 @@ export class Auth {
   }
 
   isAuthenticated(){
-    return !!this.rest.client.get('user'); 
+    return !!this.rest.client.get('user');  
   }
 
   getLoginRoute(){

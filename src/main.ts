@@ -11,7 +11,7 @@ export async function configure(aurelia) {
     await aurelia.start();
 
     const auth: Auth = Container.instance.get(Auth);
-    await auth.rest.client.authenticate().then(() => {
+    await auth.authenticateByJWT().then(() => {
         aurelia.setRoot('app');
     }).catch(() => {
         aurelia.setRoot('login');

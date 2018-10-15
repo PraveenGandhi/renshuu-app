@@ -1,9 +1,9 @@
-import {Feathers} from './feathers';
+import {FeathersApi} from './feathers-api';
 import { autoinject } from 'aurelia-framework';
 
 @autoinject()
 export class WordsService {
-    constructor(private feathers:Feathers){}
+    constructor(private feathers:FeathersApi){}
 
     find(criteria:any):Promise<any>{
         return this.feathers.client.service('word-groups').find(criteria);
