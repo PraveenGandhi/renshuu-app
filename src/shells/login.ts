@@ -1,4 +1,4 @@
-import {AppState} from './services/app-state';
+import { AppState } from './../services/app-state';
 import { Aurelia } from 'aurelia-framework';
 
 export class Login {
@@ -15,7 +15,7 @@ export class Login {
         this.appState.message="Logging in ..!"
         this.appState.login(this.email,this.password)
             .then(() => {
-                this.aurelia.setRoot('app');
+                this.aurelia.setRoot('shells/app');
             }).catch((e) => {
                 console.log(e);
             });

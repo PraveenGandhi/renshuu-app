@@ -1,9 +1,9 @@
-import { AuthorizeStep } from './services/authorize-step';
+import { AppState } from './../services/app-state';
+import { AuthorizeStep } from './../services/authorize-step';
 import { autoinject, Aurelia } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { RouterConfiguration } from 'aurelia-router';
 import 'jquery-nicescroll';
-import { AppState } from './services/app-state';
 
 declare var $: any;
 
@@ -18,7 +18,7 @@ export class App {
     config.addPipelineStep('authorize', AuthorizeStep);
     config.map([
       { name: 'base',  route: '',       moduleId: './pointer' },
-      { name: 'words', route: '/words', moduleId: './routes/words/child-router',  title: 'Words', nav: true },
+      { name: 'words', route: '/words', moduleId: '../routes/words/child-router',  title: 'Words', nav: true },
     ]);
     this.router = router;
   }
@@ -46,7 +46,7 @@ export class App {
     this.appState.loading=true;
     this.appState.message = "Logging out..!"
     this.appState.logout().then(()=>{
-      this.aurelia.setRoot('login');
+      this.aurelia.setRoot('shells/login');
     });
   }
 }

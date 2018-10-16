@@ -10,17 +10,17 @@ export async function configure(aurelia: Aurelia) {
         .plugin('aurelia-semantic-ui');
 
     await aurelia.start();
-    await aurelia.setRoot('launched');
+    await aurelia.setRoot('shells/launched');
     const appState: AppState = Container.instance.get(AppState);
 
     await appState.authenticateByJWT()
         .then(async (u) => {
             appState.loggedInUser = u.email;
             appState.message = `Welcome ${u.email}!`;
-            setTimeout(async () => await aurelia.setRoot('app'), 200);
+            setTimeout(async () => await aurelia.setRoot('shells/app'), 200);
         }).catch(async (e) => {
             console.log(e);
             appState.message = 'Yet to login..!';
-            setTimeout(async () => await aurelia.setRoot('login'), 400);
+            setTimeout(async () => await aurelia.setRoot('shells/login'), 400);
         });
 }
