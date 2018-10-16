@@ -15,24 +15,28 @@
     <div class="ui middle aligned center aligned grid animated" id="loginContent">
       <div class="column" style="max-width: 400px;">
         <form class="ui large form" submit.delegate="login()">
-          <div class="ui green raised segment">
-            <a ui-button class="inverted big green" href="/auth/google"><i class="google plus icon"></i> Login With Google</a>
+          <div class="ui raised segment">
+            <h1 class="ui purple header">練習アプリーログイン</h1>
+            <div class="ui horizontal divider">
+                <h3 class="ui purple header">ーーーーーーーーーーーーーー</h3>
+            </div>
+            <!-- <a ui-button class="inverted big green" href="/auth/google"><i class="google plus icon"></i> Login With Google</a>
             <div class="ui horizontal green divider">
               <h2 class="ui green header">OR</h2>
-            </div>
+            </div> -->
             <div class="field">
               <div class="ui left icon input">
-                <i class="user green icon"></i>
-                <input type="text" name="email" value.bind="email" placeholder="eMail/Username" required>
+                <i class="user icon"></i>
+                <input type="email" name="email" value.bind="email" placeholder="E-Mail" required>
               </div>
             </div>
             <div class="field">
               <div class="ui left icon input">
-                <i class="lock green icon"></i>
+                <i class="lock icon"></i>
                 <input type="password" name="password" value.bind="password" placeholder="Password" required>
               </div>
             </div>
-            <button type="submit" class="ui button green big inverted"><i class="ui icon sign in"></i>Login</button>
+            <button type="submit" class="ui purple big inverted button"><i class="ui unlock alternate icon"></i>Login</button>
           </div>
         </form>
       </div>
