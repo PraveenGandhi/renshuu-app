@@ -23,4 +23,19 @@ export class Login {
                 this.appState.loading=false;
             });
     }
+    register(){
+        this.appState.loading=true;
+        this.appState.message="Registering you ..!"
+        this.appState.register(this.email,this.password)
+            .then(() => {
+                return this.appState.login(this.email,this.password);
+            })
+            .then(() => {
+                this.aurelia.setRoot('shells/app');
+            })
+            .catch((e) => {
+                this.loginFailed = e.message;
+                this.appState.loading=false;
+            });
+    }
 }

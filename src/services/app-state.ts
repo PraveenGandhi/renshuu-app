@@ -30,8 +30,8 @@ export class AppState {
     return this.rest.client.logout();
   }
   
-  register(user){
-    return this.rest.client.service('user').create(user);
+  register(email,password){
+    return this.rest.client.service('users').create({email,password});
   }
 
   isAuthenticated(){
