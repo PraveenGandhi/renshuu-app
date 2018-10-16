@@ -4,11 +4,13 @@ import { Aurelia } from 'aurelia-framework';
 export class Login {
     email = '';
     password = '';
+    loginFailed='';
     static inject = [AppState, Aurelia]
     
     constructor(private appState: AppState, private aurelia: Aurelia) {}
     attached(){
         this.appState.loading=false;
+        this.loginFailed='';
     }
     login() {
         this.appState.loading=true;
@@ -17,7 +19,8 @@ export class Login {
             .then(() => {
                 this.aurelia.setRoot('shells/app');
             }).catch((e) => {
-                console.log(e);
+                this.loginFailed = e.message;
+                this.appState.loading=false;
             });
     }
 }
