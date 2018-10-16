@@ -1,3 +1,4 @@
+import { AppState } from '../../services/app-state';
 import { WordsService } from "../../services/words-service";
 import { autoinject } from "aurelia-framework";
 import { Router } from "aurelia-router";
@@ -6,11 +7,14 @@ import { Router } from "aurelia-router";
 export class Edit {
   word: any;
   
-  constructor(private wordsService: WordsService, private router: Router) {}
+  constructor(private wordsService: WordsService, private router: Router, public appState:AppState) {}
 
   async activate(params: any) {
+    this.appState.loading=true;
+    this.appState.message = "Loading word for editing..!"
     return this.wordsService.find({query: {_id:params.id}}).then((d)=>{
       this.word = d.data[0];
+      this.appState.loading=false;
     });
   }
 

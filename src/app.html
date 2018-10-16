@@ -1,19 +1,12 @@
 <template>
     <require from="app.css"></require>
-    <loader loading.bind="router.isNavigating"></loader>
+    <div class="ui active dimmer" if.bind="appState.loading">
+        <div class="ui massive text loader">${appState.message}</div>
+    </div>
     <div class="admin">
       <!--sidebar mobile-->
       <div ui-sidebar class="vertical push menu thin" id="toc">
-        <a class="item active no-padding logo" style="width:250px;">
-          <h2 class="ui pink header image mobileLogo">
-            <i class="book icon"></i>練習
-            <!--<div class="content"> 練習 <div class="sub header">頑張りましょう</div> </div>-->
-          </h2>
-        </a>
         <a class="ui medium image borderless">
-        </a>
-        <a class="item">
-          <b>頑張りましょう</b>
         </a>
         <a repeat.for="row of router.navigation" href.bind="row.href" class="ui item ${row.isActive ? 'active' : ''}">
           <i class="ui icon ${row.settings.icon}"></i>${row.title}
@@ -24,14 +17,16 @@
       <div class="mobilenavbar">
         <div class="ui fixed main menu push no-border no-radius sidemenu2 borderless">
           <a class="launch icon item" style="padding-top:20px">
-            <i class="content icon"></i>
+              <h5 class="ui purple header image logoImg">
+                  <i class="book icon"></i>練習
+              </h5>
           </a>
           <div class="right menu">
             <div ui-dropdown class="item">
               <!--<img class="ui mini circular image" src="img/avatar/people/Enid.png">-->
-              <i class="user icon"></i>
+              <i class="user icon"></i> Hello ${appState.loggedInUser}!
               <div class="menu">
-                <a class="item" click.trigger="logout()">Sign Out</a>
+                <a class="item" click.trigger="logout()"><i class="sign-out icon"></i> Sign Out</a>
               </div>
             </div>
           </div>
@@ -40,9 +35,6 @@
       <!--navbar mobile-->
   
       <div class="pusher">
-        <!-- <div class="ui active dimmer" if.bind="router.isNavigating">
-          <div class="ui large text loader">Loading</div>
-        </div> -->
         <div class="full height">
           <div class="toc">
             <div ui-sidebar class="visible left vertical menu no-border sidemenu" style="width:inherit">
@@ -61,7 +53,7 @@
             <div class="navbarmenu">
               <div class="ui fixed top  menu no-border no-radius borderless navmenu">
                 <a class="item active no-padding logo" style="width:250px;">
-                  <h2 class="ui pink header image logoImg">
+                  <h2 class="ui purple header image logoImg">
                     <i class="book icon"></i>練習
                     <!--<div class="content"> 練習 <div class="sub header">頑張りましょう</div> </div>-->
                   </h2>
@@ -70,13 +62,8 @@
                   <i class="align justify icon"></i>
                 </a>
                 <div class="right menu">
-                  <div ui-dropdown class="item">
-                    <!--<img class="ui mini circular image" src="img/avatar/people/Enid.png">-->
-                    <i class="user icon"></i>
-                    <div class="menu">
-                      <a class="item" click.trigger="logout()">Sign Out</a>
-                    </div>
-                  </div>
+                  <a class="item"><i class="user icon"></i> Hello ${appState.loggedInUser}!</a>
+                  <a class="item" click.trigger="logout()"><i class="sign-out icon"></i> Sign Out</a>
                 </div>
               </div>
             </div>

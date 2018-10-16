@@ -2,8 +2,11 @@ import { FeathersApi } from './feathers-api';
 import { autoinject } from 'aurelia-framework';
 
 @autoinject()
-export class Auth {
+export class AppState {
 
+  public loggedInUser= '';
+  public message="Logging In..!";
+  public loading=false;
   constructor(private rest:FeathersApi) {}
 
   login(email,password):Promise<any>{
@@ -11,11 +14,16 @@ export class Auth {
       "strategy":'local',
       "email":email,
       "password":password 
-    });
+    }).then(()=> this.loggedInUser = email);
   }
 
   authenticateByJWT():Promise<any>{
-    return this.rest.client.authenticate();
+    return this.rest.client.authenticate().then(response => {
+      this.message = 'Authenticated and trying to get user details!';
+      return this.rest.client.passport.verifyJWT(response.accessToken);
+    }).then(payload => {
+      return this.rest.client.service('users').get(payload.userId);
+    });
   }
 
   logout():Promise<any>{

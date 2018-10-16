@@ -11,7 +11,9 @@
         animation-timing-function: cubic-bezier(.07,.39,.29,.98);
       }
     </style>
-  
+    <div class="ui active dimmer" if.bind="appState.loading">
+        <div class="ui massive text loader">${appState.message}</div>
+    </div>
     <div class="ui middle aligned center aligned grid animated" id="loginContent">
       <div class="column" style="max-width: 400px;">
         <form class="ui large form" submit.delegate="login()">
@@ -20,7 +22,7 @@
             <div class="ui horizontal divider">
                 <h3 class="ui purple header">ーーーーーーーーーーーーーー</h3>
             </div>
-            <!-- <a ui-button class="inverted big green" href="/auth/google"><i class="google plus icon"></i> Login With Google</a>
+            <!-- <a ui-button class="inverted big green" href="/appState/google"><i class="google plus icon"></i> Login With Google</a>
             <div class="ui horizontal green divider">
               <h2 class="ui green header">OR</h2>
             </div> -->

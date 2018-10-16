@@ -1,14 +1,19 @@
-import {Auth} from './services/auth';
+import {AppState} from './services/app-state';
 import { Aurelia } from 'aurelia-framework';
 
 export class Login {
     email = '';
     password = '';
-    static inject = [Auth, Aurelia]
-    constructor(private auth: Auth, private aurelia: Aurelia) {}
-
+    static inject = [AppState, Aurelia]
+    
+    constructor(private appState: AppState, private aurelia: Aurelia) {}
+    attached(){
+        this.appState.loading=false;
+    }
     login() {
-        this.auth.login(this.email,this.password)
+        this.appState.loading=true;
+        this.appState.message="Logging in ..!"
+        this.appState.login(this.email,this.password)
             .then(() => {
                 this.aurelia.setRoot('app');
             }).catch((e) => {

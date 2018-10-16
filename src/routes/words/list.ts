@@ -1,3 +1,4 @@
+import { AppState } from '../../services/app-state';
 import {WordsService} from '../../services/words-service';
 import { autoinject } from 'aurelia-framework';
 import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
@@ -7,17 +8,17 @@ export class List {
   isLoading=false;
   words :any;
   subscriber:Subscription;
-  constructor(private wordsService:WordsService, private ea:EventAggregator){}
+  constructor(private wordsService:WordsService, private ea:EventAggregator, public appState:AppState){}
   
   async activate() {
+    this.appState.loading=true;
+    this.appState.message = "Loading words..!"
     this.wordsService.onCreated(word=>{
-      console.log('word created');
-      console.log(word);
       this.words.data.push(word);
     });
     return this.wordsService.find({}).then((d)=>{
       this.words = d;
-      console.log(d);
+      this.appState.loading=false;
     });
   }
   attached(){
