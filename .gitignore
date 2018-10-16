@@ -62,5 +62,7 @@ typings/
 
 dist
 .fusebox
-semantic/
+semantic/src
+semantic/tasks
+semantic/gulpfile.js
 packages-lock.json
