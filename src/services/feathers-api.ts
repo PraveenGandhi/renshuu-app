@@ -1,7 +1,8 @@
 import * as feathers from '@feathersjs/client';
+import { Application } from 'feathersjs__feathers';
 
 export class FeathersApi {
-  client;
+  client:Application;
   constructor() {
     this.client = feathers()
     

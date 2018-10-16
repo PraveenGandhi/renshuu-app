@@ -31,10 +31,11 @@ export class AppState {
   }
   
   register(user){
-    return this.rest.client.post('signup', user);
+    return this.rest.client.service('user').create(user);
   }
 
   isAuthenticated(){
+    console.log(this.rest.client.get('user'));
     return !!this.rest.client.get('user');  
   }
 
