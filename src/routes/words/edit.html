@@ -1,18 +1,19 @@
 <template>
     <section class="au-animate">
-        <div class="ui segment" id="view">
-            <div ui-message="" if.bind="error" class="negative animated slideInDown">
-                <i class="close icon"></i>
-                <div class="header">
-                    Input Errors
-                </div>
-                <p>Input data is missing or invalid!</p>
-            </div>
+        <div class="ui segment" id="view">            
             <form class="ui form">
-                <div class="three fields">
-                    <form-control name="name" value.bind="word._id" label="Name" required="true"></form-control>
-                    <form-control name="meaning" value.bind="word.meaning" label="Meaning" required="true"></form-control>
-                    <form-control name="furigana" value.bind="word.furigana" label="Reading" required="true"></form-control>
+                <div class="two fields">
+                  <form-control name="name" value.bind="word._id" label="Name" required="true"></form-control>
+                  <form-control name="meaning" value.bind="word.meaning" label="Meaning" required="true"></form-control>
+                </div>
+                <div class="two fields">
+                  <form-control name="furigana" value.bind="word.furigana" label="Reading" required="true"></form-control>
+                  <div class="field">
+                    <label for.bind="type" class="col-sm-2 control-label">Group</label>
+                    <select ui-dropdown multiple="" class="ui fluid dropdown" value.bind="word.groups">
+                      <option class="item" data-value.bind="k._id" repeat.for="k of groups.data">${k._id}</option>
+                    </select>
+                  </div>
                 </div>
                 <textarea name="exampples" value.bind="word.examples" cols="30" rows="10"></textarea>
                 <button type="button" class="ui submit fluid button purple" click.trigger="submit()">

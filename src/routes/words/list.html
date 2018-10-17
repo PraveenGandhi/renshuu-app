@@ -1,17 +1,17 @@
 <template>
   <div id="view">
     <div class="ui pink segment">
-        <div class="ui active dimmer" show.bind="isLoading">
-          <div ui-loader="active.bind: isLoading"></div>
-        </div>
-        <div class="ui toggle checkbox">
-          <input type="checkbox" checked.bind="showMeaning">
-          <label>Show Meaning</label>
-        </div>
-        <div class="ui toggle checkbox">
-          <input type="checkbox" checked.bind="showFurigana">
-          <label>Show Furigana</label>
-        </div>
+      <div class="ui active dimmer" show.bind="isLoading">
+        <div ui-loader="active.bind: isLoading"></div>
+      </div>
+      <div class="ui toggle checkbox">
+        <input type="checkbox" checked.bind="showFurigana">
+        <label>Show Furigana</label>
+      </div>
+      <div class="ui toggle checkbox">
+        <input type="checkbox" checked.bind="showMeaning">
+        <label>Show Meaning</label>
+      </div>
       <table class="striped celled sortable selectable very compact green" ui-table>
         <thead>
           <th sortable="_id">Word</th>

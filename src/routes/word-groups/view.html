@@ -1,13 +1,43 @@
 <template>
   <div id="view">
     <div class="ui pink raised segment">
-      <h1>${word._id}</h1>
-      <p >${word.furigana}</p>
-      <p>${word.meaning}</p>
-      <div markdown.bind="word.examples"></div>
+      <h1>${group._id}</h1>
+      <p>${group.desc}</p>
+      <div class="ui active dimmer" show.bind="isLoading">
+        <div ui-loader="active.bind: isLoading"></div>
+      </div>
+      <div class="ui toggle checkbox">
+        <input type="checkbox" checked.bind="showFurigana">
+        <label>Show Furigana</label>
+      </div>
+      <div class="ui toggle checkbox">
+        <input type="checkbox" checked.bind="showMeaning">
+        <label>Show Meaning</label>
+      </div>
+      <table class="striped celled sortable selectable very compact green" ui-table>
+        <thead>
+          <th sortable="_id">Word</th>
+          <th if.bind="showFurigana" sortable="furigana">Furigana</th>
+          <th if.bind="showMeaning" sortable="meaning">Meaning</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          <tr repeat.for="obj of words.data">
+            <td><a class="btn btn-xs" href="#words/${obj._id}">${obj._id}</a></td>
+            <td if.bind="showFurigana">${obj.furigana}</td>
+            <td if.bind="showMeaning">${obj.meaning}</td>
+            <td>
+              <a class="btn btn-xs" route-href="route: edit; params.bind: { id: obj._id }"><i class="edit icon"
+                  data-content="Edit"></i></a>
+              <a class="btn btn-xs" route-href="route: details; params.bind: { id: obj._id }"><i class="trash alternate outline icon red"
+                  data-content="Delete"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <hr>
       <button class="negative ui button" click.delegate="delete()">Delete</button>
-      <a class="ui button" route-href="route: edit; params.bind: { id: word._id }">Edit</a>
+      <a class="ui button" route-href="route: edit; params.bind: { id: group._id }">Edit</a>
     </div>
   </div>
 </template>

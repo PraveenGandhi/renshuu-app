@@ -17,9 +17,9 @@ export class App {
     config.options.root = '/';
     config.addPipelineStep('authorize', AuthorizeStep);
     config.map([
-      { name: 'base',         route: '',              moduleId: './pointer' },
-      { name: 'word-groups',  route: '/word-groups',  moduleId: '../routes/word-groups/child-router',  title: 'Word Groups', nav: true },
-      { name: 'words',        route: '/words',        moduleId: '../routes/words/child-router',  title: 'Words', nav: true },
+      { route: '',              name: 'pointer',      redirect: 'words' },
+      { route: '/word-groups',  name: 'word-groups',  moduleId: '../routes/word-groups/child-router',  title: 'Word Groups', nav: true, auth: true },
+      { route: '/words',        name: 'words',        moduleId: '../routes/words/child-router',  title: 'Words', nav: true, auth: true },
     ]);
     this.router = router;
   }

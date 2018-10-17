@@ -20,7 +20,10 @@ export class Create {
     });
   }
   public submit() {
-    
+    for (let g of this.entity.groups){
+      this.entity[g] = 1;
+    }
+    this.entity.groups=undefined;
     this.wordsService.save(this.entity).then((d)=>{
       console.log(d);
     });

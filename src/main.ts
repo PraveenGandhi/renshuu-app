@@ -14,9 +14,7 @@ export async function configure(aurelia: Aurelia) {
     const appState: AppState = Container.instance.get(AppState);
 
     await appState.authenticateByJWT()
-        .then(async (u) => {
-            appState.loggedInUser = u.email;
-            appState.message = `Welcome ${u.email}!`;
+        .then(async () => {            
             setTimeout(async () => await aurelia.setRoot('shells/app'), 200);
         }).catch(async (e) => {
             console.log(e);
