@@ -14,11 +14,10 @@ export async function configure(aurelia: Aurelia) {
     const appState: AppState = Container.instance.get(AppState);
 
     await appState.authenticateByJWT()
-        .then(async () => {            
-            setTimeout(async () => await aurelia.setRoot('shells/app'), 200);
-        }).catch(async (e) => {
+        .then(()=> {            
+            aurelia.setRoot('shells/app');
+        }).catch(e => {
             console.log(e);
-            appState.message = 'Yet to login..!';
-            setTimeout(async () => await aurelia.setRoot('shells/login'), 400);
+            aurelia.setRoot('shells/login');
         });
 }

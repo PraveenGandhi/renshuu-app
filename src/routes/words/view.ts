@@ -10,11 +10,10 @@ export class View {
   constructor(private wordsService: WordsService, private router: Router, public appState:AppState) {}
 
   async activate(params: any) {
-    this.appState.loading=true;
-    this.appState.message = "Loading word details..!"
+    this.appState.loadingMessage = "Loading word details..!"
     return this.wordsService.find({query: {_id:params.id}}).then((d)=>{
       this.word = d.data[0];
-      this.appState.loading=false;
+      this.appState.loadingMessage='';
     });
   }
 

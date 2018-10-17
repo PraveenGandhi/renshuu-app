@@ -15,8 +15,7 @@ export class View {
     private wordsService:WordsService, private ea:EventAggregator, private router: Router, public appState:AppState) {}
 
   async activate(params: any) {
-    this.appState.loading=true;
-    this.appState.message = "Loading group details..!"
+    this.appState.loadingMessage = "Loading group details..!"
     return this.wordGroupsService.find({query: {_id:params.id}}).then((d)=>{
       this.group = d.data[0];
       return this.group;
@@ -25,7 +24,7 @@ export class View {
       query[w._id]=1;
       return this.wordsService.find({query}).then((d)=>{
         this.words = d;
-        this.appState.loading=false;
+        this.appState.loadingMessage='';
         return this.words;
       })
     });

@@ -9,14 +9,13 @@ export class Create {
   groups:any;
   constructor(private wordGroupsService:WordGroupsService, private wordsService:WordsService, private appState:AppState){}
   async activate(){
-    this.appState.loading=true;
-    this.appState.message = "Loading data..!"
+    this.appState.loadingMessage = "Loading data..!"
     this.wordGroupsService.onCreated(word=>{
       this.groups.data.push(word);
     });
     return this.wordGroupsService.find({}).then((d)=>{
       this.groups = d;
-      this.appState.loading=false;
+      this.appState.loadingMessage='';
     });
   }
   public submit() {

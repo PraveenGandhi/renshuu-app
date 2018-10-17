@@ -1,7 +1,7 @@
 <template>
     <require from="./app.css"></require>
     <div class="ui active dimmer" if.bind="appState.loading">
-        <div class="ui massive text loader">${appState.message}</div>
+        <div class="ui massive text loader">${appState.loadingMessage}</div>
     </div>
     <div class="admin">
       <!--sidebar mobile-->

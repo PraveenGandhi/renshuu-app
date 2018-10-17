@@ -11,14 +11,13 @@ export class List {
   constructor(private wordGroupsService:WordGroupsService, private ea:EventAggregator, public appState:AppState){}
   
   async activate() {
-    this.appState.loading=true;
-    this.appState.message = "Loading Word Groups..!"
+    this.appState.loadingMessage = "Loading Word Groups..!"
     this.wordGroupsService.onCreated(word=>{
       this.response.data.push(word);
     });
     return this.wordGroupsService.find({}).then((d)=>{
       this.response = d;
-      this.appState.loading=false;
+      this.appState.loadingMessage='';
     });
   }
   attached(){

@@ -9,23 +9,21 @@ export class Login {
     
     constructor(private appState: AppState, private aurelia: Aurelia) {}
     attached(){
-        this.appState.loading=false;
+        this.appState.loadingMessage='';
         this.loginFailed='';
     }
     login() {
-        this.appState.loading=true;
-        this.appState.message="Logging in ..!"
+        this.appState.loadingMessage="Logging in ..!"
         this.appState.login(this.email,this.password)
             .then(() => {
                 this.aurelia.setRoot('shells/app');
             }).catch((e) => {
                 this.loginFailed = e.message;
-                this.appState.loading=false;
+                this.appState.loadingMessage='';
             });
     }
     register(){
-        this.appState.loading=true;
-        this.appState.message="Registering you ..!"
+        this.appState.loadingMessage="Registering you ..!"
         this.appState.register(this.email,this.password)
             .then(() => {
                 return this.appState.login(this.email,this.password);
@@ -35,7 +33,7 @@ export class Login {
             })
             .catch((e) => {
                 this.loginFailed = e.message;
-                this.appState.loading=false;
+                this.appState.loadingMessage='';
             });
     }
 }

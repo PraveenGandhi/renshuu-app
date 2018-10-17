@@ -5,8 +5,7 @@ import { autoinject } from 'aurelia-framework';
 export class AppState {
 
   public loggedInUser= '';
-  public message="Logging In..!";
-  public loading=false;
+  public loadingMessage="Logging In..!";
   constructor(public rest:FeathersApi) {}
 
   login(email,password):Promise<any>{
@@ -22,13 +21,12 @@ export class AppState {
 
   authenticateByJWT():Promise<any>{
     return this.rest.client.authenticate().then(response => {
-      this.message = 'Authenticated and loading user details!';
+      this.loadingMessage = 'Authenticated and loading user details!';
       return this.rest.client.passport.verifyJWT(response.accessToken);
     }).then(payload => {
       return this.rest.client.service('users').get(payload.userId);
     }).then((u)=>{
       this.loggedInUser = u.email;
-      this.message = `Welcome ${u.email}!`;
       this.rest.client.set('user',u.email);
     });
   }

@@ -44,8 +44,7 @@ export class App {
     });
   }
   public logout() {
-    this.appState.loading=true;
-    this.appState.message = "Logging out..!"
+    this.appState.loadingMessage = "Logging out..!"
     this.appState.logout().then(()=>{
       this.aurelia.setRoot('shells/login');
     });

@@ -11,15 +11,14 @@ export class Edit {
   constructor(private wordGroupsService:WordGroupsService, private wordsService: WordsService, private router: Router, public appState:AppState) {}
 
   async activate(params: any) {
-    this.appState.loading=true;
-    this.appState.message = "Loading word for editing..!"
+    this.appState.loadingMessage = "Loading word for editing..!"
     return [this.wordsService.find({query: {_id:params.id}}).then((d)=>{
       this.word = d.data[0];
-      this.appState.loading=false;
+      this.appState.loadingMessage='';
     }),
     this.wordGroupsService.find({}).then((d)=>{
       this.groups = d;
-      this.appState.loading=false;
+      this.appState.loadingMessage='';
     })];
   }
 

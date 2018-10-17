@@ -4,6 +4,6 @@ import { autoinject } from 'aurelia-framework';
 @autoinject()
 export class Launched{
     constructor(public appState:AppState){
-        appState.message = "App launched and trying to login..!";
+        appState.loadingMessage = "App launched and trying to login..!";
     }
 }
