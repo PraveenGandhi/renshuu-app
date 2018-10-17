@@ -13,7 +13,7 @@ export class Edit {
     this.appState.loadingMessage = "Loading word for editing..!"
     return this.wordGroupsService.find({query: {_id:params.id}}).then((d)=>{
       this.word = d.data[0];
-      this.appState.loading=false;
+      this.appState.loadingMessage='';
     });
   }
 
