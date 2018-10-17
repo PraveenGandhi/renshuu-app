@@ -32,7 +32,7 @@ export class App {
     $('.hamburger').on('click', function () {
       if ('show' === $(this).data('name')) {
         $('.toc, .logo').animate({
-          width: '135px'
+          width: '140px'
         }, 350);
         $(this).data('name', 'hide');
       } else {

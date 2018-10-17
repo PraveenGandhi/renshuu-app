@@ -27,9 +27,9 @@
             <td if.bind="showFurigana">${obj.furigana}</td>
             <td if.bind="showMeaning">${obj.meaning}</td>
             <td>
-              <a class="btn btn-xs" route-href="route: edit; params.bind: { id: obj._id }"><i class="edit icon"
+              <a class="btn btn-xs" href="#words/edit/${obj._id}"><i class="edit icon"
                   data-content="Edit"></i></a>
-              <a class="btn btn-xs" route-href="route: details; params.bind: { id: obj._id }"><i class="trash alternate outline icon red"
+              <a class="btn btn-xs" href="#words/${obj._id}"><i class="trash alternate outline icon red"
                   data-content="Delete"></i></a>
             </td>
           </tr>

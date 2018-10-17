@@ -18,6 +18,7 @@ export class View {
     this.appState.loadingMessage = "Loading group details..!"
     return this.wordGroupsService.find({query: {_id:params.id}}).then((d)=>{
       this.group = d.data[0];
+      this.wordGroupsService.viewItem=this.group._id;
       return this.group;
     }).then((w)=>{
       let query = {};
@@ -41,6 +42,9 @@ export class View {
         this.isLoading=false;
       });
     });
+  }
+  detached(){
+    this.wordGroupsService.viewItem='';
   }
 
   delete(){

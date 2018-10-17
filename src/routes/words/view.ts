@@ -13,8 +13,12 @@ export class View {
     this.appState.loadingMessage = "Loading word details..!"
     return this.wordsService.find({query: {_id:params.id}}).then((d)=>{
       this.word = d.data[0];
+      this.wordsService.viewItem=this.word._id;
       this.appState.loadingMessage='';
     });
+  }
+  detached(){
+    this.wordsService.viewItem='';
   }
 
   delete(){

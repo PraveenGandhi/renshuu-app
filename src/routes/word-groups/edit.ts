@@ -2,24 +2,11 @@ import { WordGroupsService } from './../../services/word-groups-service';
 import { AppState } from '../../services/app-state';
 import { autoinject } from "aurelia-framework";
 import { Router } from "aurelia-router";
+import { BaseEditVM } from '../base/base-edit';
 
 @autoinject()
-export class Edit {
-  word: any;
-  
-  constructor(private wordGroupsService: WordGroupsService, private router: Router, public appState:AppState) {}
-
-  async activate(params: any) {
-    this.appState.loadingMessage = "Loading word for editing..!"
-    return this.wordGroupsService.find({query: {_id:params.id}}).then((d)=>{
-      this.word = d.data[0];
-      this.appState.loadingMessage='';
-    });
-  }
-
-  public submit(){
-    this.wordGroupsService.update(this.word).then(()=>{
-      this.router.navigate('');
-    });
+export class Edit extends BaseEditVM{
+  constructor(wordGroupsService: WordGroupsService, router: Router, appState:AppState) {
+    super('group', wordGroupsService,router,appState);
   }
 }

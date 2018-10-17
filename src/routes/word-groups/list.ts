@@ -1,36 +1,13 @@
 import { WordGroupsService } from './../../services/word-groups-service';
 import { AppState } from '../../services/app-state';
 import { autoinject } from 'aurelia-framework';
-import { EventAggregator, Subscription } from 'aurelia-event-aggregator';
+import { EventAggregator } from 'aurelia-event-aggregator';
+import { BaseListVM } from '../base/base-list';
 
 @autoinject()
-export class List {
-  isLoading=false;
-  response :any;
-  subscriber:Subscription;
-  constructor(private wordGroupsService:WordGroupsService, private ea:EventAggregator, public appState:AppState){}
+export class List extends BaseListVM{
   
-  async activate() {
-    this.appState.loadingMessage = "Loading Word Groups..!"
-    this.wordGroupsService.onCreated(word=>{
-      this.response.data.push(word);
-    });
-    return this.wordGroupsService.find({}).then((d)=>{
-      this.response = d;
-      this.appState.loadingMessage='';
-    });
-  }
-  attached(){
-    this.subscriber = this.ea.subscribe('sortingChanged', data => {
-      this.isLoading=true;
-      this.wordGroupsService.find({query: {$sort: data}}).then((d)=>{
-        this.response = d;
-        this.isLoading=false;
-      });
-    });
-  }
-
-  deactivate() {
-    this.subscriber.dispose();
+  constructor(wordGroupsService:WordGroupsService, ea:EventAggregator, appState:AppState){
+    super('Word Groups', wordGroupsService,ea,appState)
   }
 }

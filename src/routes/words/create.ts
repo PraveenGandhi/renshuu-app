@@ -2,12 +2,14 @@ import { WordGroupsService } from './../../services/word-groups-service';
 import { AppState } from './../../services/app-state';
 import { WordsService } from "../../services/words-service";
 import { autoinject } from "aurelia-framework";
+import { BaseCreateVM } from '../base/base-create';
 
 @autoinject()
-export class Create {
-  public entity: any;
+export class Create extends BaseCreateVM{
   groups:any;
-  constructor(private wordGroupsService:WordGroupsService, private wordsService:WordsService, private appState:AppState){}
+  constructor(private wordGroupsService:WordGroupsService, wordsService:WordsService, appState:AppState){
+    super(wordsService,appState);
+  }
   async activate(){
     this.appState.loadingMessage = "Loading data..!"
     this.wordGroupsService.onCreated(word=>{
@@ -22,9 +24,6 @@ export class Create {
     for (let g of this.entity.groups){
       this.entity[g] = 1;
     }
-    this.entity.groups=undefined;
-    this.wordsService.save(this.entity).then((d)=>{
-      console.log(d);
-    });
+    super.submit();
   }
 }

@@ -10,12 +10,35 @@
         animation: fadeInRight 0.5s;
         animation-timing-function: cubic-bezier(.07,.39,.29,.98);
       }
+      .footer {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background: #fff;
+        height: 42px;
+        padding: 8px 10px 10px !important;
+        border-top: 1px solid #DADADA; 
+      }
+      .footer p a img{
+        height: 30px;
+        width: 30px;
+      }
+      .footer p i, .footer p{
+        margin-right: 0 !important;
+        margin-top: 3px;
+      }
+      .footer p{
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-weight: normal;
+      }
     </style>
     <div class="ui active dimmer" if.bind="appState.loading">
         <div class="ui massive text loader">${appState.loadingMessage}</div>
     </div>
     <div class="ui middle aligned center aligned grid animated" id="loginContent">
-      <div class="left aligned column" style="max-width: 400px;">
+      <div class="column" style="max-width: 400px;">
         <div class="ui icon error message" if.bind="loginFailed">
             <i class="lock icon"></i>
             <div class="content">
@@ -48,10 +71,20 @@
               </div>
             </div>
             <button type="submit" class="ui purple big inverted button"><i class="ui unlock alternate icon"></i>Login</button>
-            <button type="button" class="ui pull right secondary big inverted button" click.delegate="register()"><i class="user icon"></i>Register</button>
+            <button type="button" class="ui right floated secondary big inverted button" click.delegate="register()"><i class="user icon"></i>Register</button>
           </div>
         </form>
       </div>
     </div>
-  
+    <div class="footer">
+        <p class="ui right floated tiny header">
+          
+          <a href="//feathersjs.com" target="_new"><img src="./semantic/dist/themes/default/assets/images/feather.png" title="feathersjs" alt="feathers"></a>
+          <a href="//aurelia.io" target="_new"><img src="./semantic/dist/themes/default/assets/images/aurelia.png" title="Aurelia" alt="Aurelia"></a>
+          <a href="//semantic-ui.com" target="_new"><img src="./semantic/dist/themes/default/assets/images/semantic-ui.png" title="Semantic UI" alt="Semantic UI"></a>
+          <a href="//fuse-box.org" target="_new"><img src="./semantic/dist/themes/default/assets/images/fusebox.png" title="FuseBox" alt="FuseBox"></a>
+        </p>
+        <p class="ui right floated header">Built With <i class="heart icon red"></i></p>
+      </div>
+    </div>
   </template>

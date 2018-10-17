@@ -11,7 +11,7 @@
           <th>Actions</th>
         </thead>
         <tbody>
-          <tr repeat.for="obj of response.data">
+          <tr repeat.for="obj of entities.data">
             <td><a class="btn btn-xs" route-href="route: details; params.bind: { id: obj._id }">${obj._id}</a></td>
             <td>${obj.desc}</td>
             <td>
