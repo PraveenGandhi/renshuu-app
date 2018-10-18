@@ -2,7 +2,10 @@
     <div class="ui green segment" id="view">
         <form class="ui form">
             <form-control name="name" value.bind="entity.name" label="Name" required="true"></form-control>
-            <textarea name="desc" value.bind="entity.desc" cols="30" rows="10"></textarea>
+            <div class="field">
+                <label for.bind="desc" class="col-sm-2 control-label">Desc</label>
+                <textarea name="desc" value.bind="entity.desc" cols="30" rows="8"></textarea>
+            </div>
             <slot></slot>
         </form>
     </div>

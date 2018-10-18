@@ -14,7 +14,10 @@
                     </select>
                 </div>
             </div>
-            <textarea name="exampples" value.bind="entity.examples" cols="30" rows="10"></textarea>
+            <div class="field">
+                <label for.bind="desc" class="col-sm-2 control-label">Desc</label>
+                <textarea name="exampples" value.bind="entity.examples" cols="30" rows="10"></textarea>
+            </div>
             <slot></slot>
         </form>
     </div>
