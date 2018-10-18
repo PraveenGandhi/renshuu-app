@@ -16,13 +16,13 @@ export class View {
 
   async activate(params: any) {
     this.appState.loadingMessage = "Loading group details..!"
-    return this.wordGroupsService.find({query: {_id:params.id}}).then((d)=>{
-      this.group = d.data[0];
-      this.wordGroupsService.viewItem=this.group._id;
+    return this.wordGroupsService.get(params.id).then((d)=>{
+      this.group = d;
+      this.wordGroupsService.viewItem=this.group.name;
       return this.group;
     }).then((w)=>{
       let query = {};
-      query[w._id]=1;
+      query[w.name]=1;
       return this.wordsService.find({query}).then((d)=>{
         this.words = d;
         this.appState.loadingMessage='';
@@ -35,7 +35,7 @@ export class View {
     this.subscriber = this.ea.subscribe('sortingChanged', data => {
       this.isLoading=true;
       let query = {};
-      query[this.group._id]=1;
+      query[this.group.name]=1;
       query['$sort']= data;
       this.wordsService.find({query}).then((d)=>{
         this.words = d;

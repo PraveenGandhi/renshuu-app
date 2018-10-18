@@ -7,6 +7,10 @@ export class BaseService{
         this.service = feathers.client.service(serviceName)
     }
 
+    get(id:any):Promise<any>{
+        return this.service.get(id);
+    }
+
     find(criteria:any):Promise<any>{
         return this.service.find(criteria);
     }

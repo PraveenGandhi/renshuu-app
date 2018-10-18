@@ -2,7 +2,7 @@
   <section class="au-animate">
     <div class="ui segment" id="view">
       <form class="ui form">
-        <form-control name="name" value.bind="entity._id" label="Name" required="true"></form-control>
+        <form-control name="name" value.bind="entity.name" label="Name" required="true"></form-control>
         <textarea name="desc" value.bind="entity.desc" cols="30" rows="10"></textarea>
         <button type="button" class="ui submit fluid button green" click.trigger="submit()">
           <i class="send icon"></i>Add</button>

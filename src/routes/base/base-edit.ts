@@ -11,9 +11,9 @@ export class BaseEditVM {
     async activate(params: any) {
         this.appState.loadingMessage = `Loading ${this.type} for editing..!`;
         if(!this.promisesAdded){
-            let promise = this.mainService.find({query: {_id:params.id}}).then((d)=>{
-                this.entity = d.data[0];
-                this.mainService.editItem=this.entity._id;
+            let promise = this.mainService.get(params.id).then((d)=>{
+                this.entity = d;
+                this.mainService.editItem=this.entity.name;
                 this.appState.loadingMessage='';
               });
               this.promises.push(promise);

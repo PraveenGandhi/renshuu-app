@@ -11,9 +11,9 @@ export class View {
 
   async activate(params: any) {
     this.appState.loadingMessage = "Loading word details..!"
-    return this.wordsService.find({query: {_id:params.id}}).then((d)=>{
-      this.word = d.data[0];
-      this.wordsService.viewItem=this.word._id;
+    return this.wordsService.get(params.id).then((d)=>{
+      this.word = d;
+      this.wordsService.viewItem=this.word.name;
       this.appState.loadingMessage='';
     });
   }

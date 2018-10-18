@@ -1,7 +1,7 @@
 <template>
   <div id="view">
     <div class="ui pink raised segment">
-      <h1>${group._id}</h1>
+      <h1>${group.name}</h1>
       <p>${group.desc}</p>
       <div class="ui active dimmer" show.bind="isLoading">
         <div ui-loader="active.bind: isLoading"></div>
@@ -16,14 +16,14 @@
       </div>
       <table class="striped celled sortable selectable very compact green" ui-table>
         <thead>
-          <th sortable="_id">Word</th>
+          <th sortable="name">Word</th>
           <th if.bind="showFurigana" sortable="furigana">Furigana</th>
           <th if.bind="showMeaning" sortable="meaning">Meaning</th>
           <th>Actions</th>
         </thead>
         <tbody>
           <tr repeat.for="obj of words.data">
-            <td><a class="btn btn-xs" href="#words/${obj._id}">${obj._id}</a></td>
+            <td><a class="btn btn-xs" href="#words/${obj._id}">${obj.name}</a></td>
             <td if.bind="showFurigana">${obj.furigana}</td>
             <td if.bind="showMeaning">${obj.meaning}</td>
             <td>

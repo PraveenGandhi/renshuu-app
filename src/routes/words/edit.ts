@@ -14,9 +14,9 @@ export class Edit extends BaseEditVM{
   }
 
   async activate(params: any) {
-    this.promises = [this.mainService.find({query: {_id:params.id}}).then((d)=>{
-      this.entity = d.data[0];
-      this.mainService.editItem=this.entity._id;
+    this.promises = [this.mainService.get(params.id).then((d)=>{
+      this.entity = d;
+      this.mainService.editItem=this.entity.name;
       this.appState.loadingMessage='';
     }),
     this.wordGroupsService.find({}).then((d)=>{
