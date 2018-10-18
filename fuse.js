@@ -67,7 +67,9 @@ let run = (production) => {
     fuse.bundle("vendor")
         .cache(true)
         .instructions(` 
-        + @feathersjs/client
+        + @feathersjs/feathers
+        + @feathersjs/socketio-client
+        + @feathersjs/authentication-client
         + fuse-box-css
         + aurelia-bootstrapper
         + fuse-box-aurelia-loader

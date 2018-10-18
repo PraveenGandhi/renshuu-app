@@ -1,3 +1,4 @@
+import { Router } from 'aurelia-router';
 import { WordGroupsService } from './../../services/word-groups-service';
 import { AppState } from './../../services/app-state';
 import { WordsService } from "../../services/words-service";
@@ -7,8 +8,8 @@ import { BaseCreateVM } from '../base/base-create';
 @autoinject()
 export class Create extends BaseCreateVM{
   groups:any;
-  constructor(private wordGroupsService:WordGroupsService, wordsService:WordsService, appState:AppState){
-    super(wordsService,appState);
+  constructor(private wordGroupsService:WordGroupsService, wordsService:WordsService, router:Router, appState:AppState){
+    super(wordsService,router,appState);
   }
   async activate(){
     this.entity= {};

@@ -1,3 +1,4 @@
+import { Router } from 'aurelia-router';
 import { RadicalsService } from './../../services/radicals-service';
 import { KanjiService } from './../../services/kanji-service';
 import { KanjiGroupsService } from './../../services/kanji-groups-service';
@@ -10,8 +11,8 @@ export class KanjiCreate extends BaseCreateVM{
   groups:any;
   radicals:any;
   constructor(private kanjiGroupsService:KanjiGroupsService, private radicalsService:RadicalsService, 
-    kanjiService:KanjiService, appState:AppState){
-    super(kanjiService,appState);
+    kanjiService:KanjiService, router:Router, appState:AppState){
+    super(kanjiService,router,appState);
   }
   async activate(){
     this.entity={};
@@ -27,7 +28,7 @@ export class KanjiCreate extends BaseCreateVM{
       this.radicals = d;
       this.appState.loadingMessage='';
     })
-    ];
+  ];
   }
   public submit() {
     for (let g of this.entity.groups){

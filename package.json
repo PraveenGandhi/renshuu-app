@@ -16,7 +16,9 @@
     "uglify-js": "^3.4.9"
   },
   "dependencies": {
-    "@feathersjs/client": "^3.7.3",
+    "@feathersjs/authentication-client": "^1.0.6",
+    "@feathersjs/feathers": "^3.2.3",
+    "@feathersjs/socketio-client": "^1.1.4",
     "@types/feathersjs__authentication-client": "^1.0.4",
     "@types/feathersjs__feathers": "^3.0.5",
     "@types/feathersjs__socketio-client": "^1.0.1",

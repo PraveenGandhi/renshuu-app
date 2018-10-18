@@ -1,26 +1,28 @@
 import { FeathersApi } from './feathers-api';
+import { Service, Paginated, Params, NullableId, Id } from 'feathersjs__feathers';
+
 export class BaseService{
-    public service:any;
+    public service:Service<any>;
     public editItem='';
     public viewItem='';
     constructor(feathers:FeathersApi,serviceName:string){
         this.service = feathers.client.service(serviceName)
     }
 
-    get(id:any):Promise<any>{
-        return this.service.get(id);
+    get(id:Id,params?:Params):Promise<any>{
+        return this.service.get(id,params);
     }
 
-    find(criteria:any):Promise<any>{
+    find(criteria:Params):Promise<any[] | Paginated<any>>{
         return this.service.find(criteria);
     }
 
-    save(word:any):Promise<any>{
-        return this.service.create(word);
+    save(word:Partial<any>,params?:Params):Promise<any>{
+        return this.service.create(word,params);
     }
 
-    update(word:any):Promise<any>{
-        return this.service.update(word._id,word);
+    update(word:any,params?:Params):Promise<any>{
+        return this.service.update(word._id,word,params);
     }
 
     onCreated(callback:Function){
@@ -29,7 +31,7 @@ export class BaseService{
         });
     }
 
-    delete(id:any):Promise<any>{
-        return this.service.remove(id);
+    delete(id:NullableId,params?: Params):Promise<any>{
+        return this.service.remove(id,params);
     }
 }

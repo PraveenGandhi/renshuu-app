@@ -37,6 +37,9 @@ export class KanjiEdit extends BaseEditVM{
     for (let g of this.entity.groups){
       this.entity[g] = 1;
     }
+    for (let r of this.entity.radicals){
+      this.entity[r] = 1;
+    }
     super.submit();
   }
 }
