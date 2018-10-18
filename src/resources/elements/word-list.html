@@ -1,0 +1,33 @@
+<template bindable="entities,isLoading">
+    <div class="ui active dimmer" show.bind="isLoading">
+        <div ui-loader="active.bind: isLoading"></div>
+    </div>
+    <div class="ui toggle checkbox">
+        <input type="checkbox" checked.bind="showFurigana">
+        <label>Show Furigana</label>
+    </div>
+    <div class="ui toggle checkbox">
+        <input type="checkbox" checked.bind="showMeaning">
+        <label>Show Meaning</label>
+    </div>
+    <table class="striped celled sortable selectable very compact green" ui-table>
+        <thead>
+            <th sortable="name">Word</th>
+            <th if.bind="showFurigana" sortable="furigana">Furigana</th>
+            <th if.bind="showMeaning" sortable="meaning">Meaning</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr repeat.for="obj of entities.data">
+                <td><a class="btn btn-xs" route-href="route: details; params.bind: { id: obj._id }">${obj.name}</a></td>
+                <td if.bind="showFurigana">${obj.furigana}</td>
+                <td if.bind="showMeaning">${obj.meaning}</td>
+                <td>
+                    <a class="btn btn-xs" href="#words/edit/${obj._id}"><i class="edit icon" data-content="Edit"></i></a>
+                    <a class="btn btn-xs" href="#words/${obj._id}"><i class="trash alternate outline icon red"
+                            data-content="Delete"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</template>

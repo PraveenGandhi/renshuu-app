@@ -4,6 +4,7 @@ export function configure(config) {
       './elements/form-control',
       './elements/form-submit',
       './elements/kanji-list.html',
+      './elements/word-list.html',
       './attributes/markdown',
       './attributes/sortable'
   ]);
