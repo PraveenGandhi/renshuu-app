@@ -1,8 +1,8 @@
 <template>
   <div id="view">
     <div class="ui pink raised segment">
-      <h1>${group.name}</h1>
-      <p>${group.desc}</p>
+      <h1>${entity.name}</h1>
+      <p>${entity.desc}</p>
       <div class="ui active dimmer" show.bind="isLoading">
         <div ui-loader="active.bind: isLoading"></div>
       </div>
@@ -37,7 +37,7 @@
       </table>
       <hr>
       <button class="negative ui button" click.delegate="delete()">Delete</button>
-      <a class="ui button" route-href="route: edit; params.bind: { id: group._id }">Edit</a>
+      <a class="ui button" href="#word-groups/edit/${entity._id}">Edit</a>
     </div>
   </div>
 </template>

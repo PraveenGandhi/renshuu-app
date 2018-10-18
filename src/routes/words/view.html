@@ -1,14 +1,14 @@
 <template>
   <div id="view">
     <div class="ui pink raised segment">
-      <h1>${word.name}</h1>
-      <p >${word.furigana}</p>
-      <p>${word.meaning}</p>
-      <div markdown.bind="word.examples"></div>
-      <p repeat.for="g of word.groups">${g}</p>
+      <h1>${entity.name}</h1>
+      <p >${entity.furigana}</p>
+      <p>${entity.meaning}</p>
+      <div markdown.bind="entity.examples"></div>
+      <p repeat.for="g of entity.groups">${g}</p>
       <hr>
       <button class="negative ui button" click.delegate="delete()">Delete</button>
-      <a class="ui button" route-href="route: edit; params.bind: { id: word._id }">Edit</a>
+      <a class="ui button" href="#words/edit/${entity._id}">Edit</a>
     </div>
   </div>
 </template>
