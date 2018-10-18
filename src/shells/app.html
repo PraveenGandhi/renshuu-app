@@ -8,7 +8,7 @@
       <div ui-sidebar class="vertical push menu thin" id="toc">
         <a class="ui medium image borderless">
         </a>
-        <a repeat.for="row of router.navigation" href.bind="row.href" class="ui item ${row.isActive ? 'active' : ''}">
+        <a repeat.for="row of router.navigation" href.bind="row.href" class="ui item ${row.isActive ? 'active green' : ''}">
           <i class="ui icon ${row.settings.icon}"></i>${row.title}
         </a>
       </div>
@@ -43,7 +43,7 @@
               <a class="item">
                 <b>頑張りましょう</b>
               </a>
-              <a repeat.for="row of router.navigation" href.bind="row.href" class="ui item ${row.isActive ? 'active' : ''}">
+              <a repeat.for="row of router.navigation" href.bind="row.href" class="ui item ${row.isActive ? 'active green' : ''}">
                 <i class="ui icon ${row.settings.icon}"></i>${row.title}
               </a>
             </div>

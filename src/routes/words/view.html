@@ -1,14 +1,12 @@
 <template>
-  <div id="view">
-    <div class="ui pink raised segment">
-      <h1>${entity.name}</h1>
-      <p >${entity.furigana}</p>
-      <p>${entity.meaning}</p>
-      <div markdown.bind="entity.examples"></div>
-      <p>${entity.groups.join(', ')}</p>
-      <hr>
-      <button class="negative ui button" click.delegate="delete()">Delete</button>
-      <a class="ui button" href="#words/edit/${entity._id}">Edit</a>
-    </div>
+  <div class="ui green segment" id="view">
+    <h1>${entity.name}</h1>
+    <p>${entity.furigana}</p>
+    <p>${entity.meaning}</p>
+    <div markdown.bind="entity.examples"></div>
+    <p>${entity.groups.join(', ')}</p>
+    <hr>
+    <button class="negative ui button" click.delegate="delete()">Delete</button>
+    <a class="ui button" href="#words/edit/${entity._id}">Edit</a>
   </div>
 </template>

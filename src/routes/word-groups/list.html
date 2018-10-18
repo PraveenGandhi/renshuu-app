@@ -1,28 +1,26 @@
 <template>
-  <div id="view">
-    <div class="ui pink segment">
-        <div class="ui active dimmer" show.bind="isLoading">
-          <div ui-loader="active.bind: isLoading"></div>
-        </div>
-      <table class="striped celled sortable selectable very compact green" ui-table>
-        <thead>
-          <th sortable="name">Name</th>
-          <th sortable="desc">Desc</th>
-          <th>Actions</th>
-        </thead>
-        <tbody>
-          <tr repeat.for="obj of entities.data">
-            <td><a class="btn btn-xs" route-href="route: details; params.bind: { id: obj._id }">${obj.name}</a></td>
-            <td>${obj.desc}</td>
-            <td>
-              <a class="btn btn-xs" route-href="route: edit; params.bind: { id: obj._id }"><i class="edit icon"
-                  data-content="Edit"></i></a>
-              <a class="btn btn-xs" route-href="route: details; params.bind: { id: obj._id }"><i class="trash alternate outline icon red"
-                  data-content="Delete"></i></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="ui green segment" id="view">
+    <div class="ui active dimmer" show.bind="isLoading">
+      <div ui-loader="active.bind: isLoading"></div>
     </div>
+    <table class="striped celled sortable selectable very compact green" ui-table>
+      <thead>
+        <th sortable="name">Name</th>
+        <th sortable="desc">Desc</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr repeat.for="obj of entities.data">
+          <td><a class="btn btn-xs" route-href="route: details; params.bind: { id: obj._id }">${obj.name}</a></td>
+          <td>${obj.desc}</td>
+          <td>
+            <a class="btn btn-xs" route-href="route: edit; params.bind: { id: obj._id }"><i class="edit icon"
+                data-content="Edit"></i></a>
+            <a class="btn btn-xs" route-href="route: details; params.bind: { id: obj._id }"><i class="trash alternate outline icon red"
+                data-content="Delete"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>

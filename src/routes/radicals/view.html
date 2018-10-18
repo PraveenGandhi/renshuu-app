@@ -1,12 +1,10 @@
 <template>
-  <div id="view">
-    <div class="ui pink raised segment">
-      <h1>${entity.name}</h1>
-      <p>${entity.desc}</p>
-      <kanji-list kanji.bind="kanji" is-loading.bind="isLoading"></kanji-list>
-      <hr>
-      <button class="negative ui button" click.delegate="delete()">Delete</button>
-      <a class="ui button" href="#radicals/edit/${entity._id}">Edit</a>
-    </div>
+  <div class="ui green segment" id="view">
+    <h1>${entity.name}</h1>
+    <p>${entity.desc}</p>
+    <kanji-list kanji.bind="kanji" is-loading.bind="isLoading"></kanji-list>
+    <hr>
+    <button class="negative ui button" click.delegate="delete()">Delete</button>
+    <a class="ui button" href="#radicals/edit/${entity._id}">Edit</a>
   </div>
 </template>
