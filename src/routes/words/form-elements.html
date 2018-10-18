@@ -1,0 +1,23 @@
+<template bindable="entity,groups">
+    <section class="au-animate">
+        <div class="ui segment" id="view">
+            <form class="ui form">
+                <div class="two fields">
+                    <form-control name="name" value.bind="entity.name" label="Name" required="true"></form-control>
+                    <form-control name="meaning" value.bind="entity.meaning" label="Meaning" required="true"></form-control>
+                </div>
+                <div class="two fields">
+                    <form-control name="furigana" value.bind="entity.furigana" label="Reading" required="true"></form-control>
+                    <div class="field">
+                        <label for.bind="type" class="col-sm-2 control-label">Group</label>
+                        <select ui-dropdown multiple="" class="ui fluid dropdown" value.bind="entity.groups">
+                            <option class="item" data-value.bind="k.name" repeat.for="k of groups.data">${k.name}</option>
+                        </select>
+                    </div>
+                </div>
+                <textarea name="exampples" value.bind="entity.examples" cols="30" rows="10"></textarea>
+                <slot></slot>                
+            </form>
+        </div>
+    </section>
+</template>

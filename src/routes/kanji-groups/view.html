@@ -2,13 +2,11 @@
   <div id="view">
     <div class="ui pink raised segment">
       <h1>${entity.name}</h1>
-      <p >${entity.furigana}</p>
-      <p>${entity.meaning}</p>
-      <div markdown.bind="entity.examples"></div>
-      <p>${entity.groups.join(', ')}</p>
+      <p>${entity.desc}</p>
+      <kanji-list kanji.bind="kanji" is-loading.bind="isLoading"></kanji-list>
       <hr>
       <button class="negative ui button" click.delegate="delete()">Delete</button>
-      <a class="ui button" href="#words/edit/${entity._id}">Edit</a>
+      <a class="ui button" href="#kanji-groups/edit/${entity._id}">Edit</a>
     </div>
   </div>
 </template>

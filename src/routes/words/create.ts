@@ -11,6 +11,7 @@ export class Create extends BaseCreateVM{
     super(wordsService,appState);
   }
   async activate(){
+    this.entity= {};
     this.appState.loadingMessage = "Loading data..!"
     this.wordGroupsService.onCreated(word=>{
       this.groups.data.push(word);

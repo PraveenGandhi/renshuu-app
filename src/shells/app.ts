@@ -20,6 +20,9 @@ export class App {
       { route: '',              name: 'pointer',      redirect: 'words' },
       { route: '/word-groups',  name: 'word-groups',  moduleId: '../routes/word-groups/child-router',  title: 'Word Groups', nav: true, auth: true },
       { route: '/words',        name: 'words',        moduleId: '../routes/words/child-router',  title: 'Words', nav: true, auth: true },
+      { route: '/radicals',     name: 'radicals',     moduleId: '../routes/radicals/child-router',  title: 'Radicals', nav: true, auth: true },
+      { route: '/kanji-groups', name: 'kanji-groups', moduleId: '../routes/kanji-groups/child-router',  title: 'Kanji Groups', nav: true, auth: true },
+      { route: '/kanji',        name: 'kanji',        moduleId: '../routes/kanji/child-router',  title: 'Kanji', nav: true, auth: true },
     ]);
     this.router = router;
   }

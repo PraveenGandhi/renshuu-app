@@ -1,0 +1,16 @@
+<template>
+  <section class="au-animate">
+    <div class="ui pointing menu">
+      <a repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''} item" href.bind="row.href">
+        <i class="${row.settings.icon} icon" data-content="View Answers"></i>${row.title}
+      </a>
+      <a show.bind="service.editItem" class="active item">
+        <i class="edit icon"></i> ${service.editItem}
+      </a>
+      <a show.bind="service.viewItem" class="active item">
+        <i class="unhide icon"></i>${service.viewItem}
+      </a>
+    </div>
+    <router-view></router-view>
+  </section>
+</template>

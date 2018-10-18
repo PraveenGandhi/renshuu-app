@@ -6,6 +6,7 @@ export class BaseCreateVM {
     constructor(protected mainService: BaseService, public appState: AppState) {}
 
     public activate() {
+        this.entity= {};
         this.appState.loadingMessage = '';
     }
     public submit() {

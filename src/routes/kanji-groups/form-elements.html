@@ -1,0 +1,11 @@
+<template bindable="entity">
+    <section class="au-animate">
+        <div class="ui segment" id="view">
+            <form class="ui form">
+                <form-control name="name" value.bind="entity.name" label="Name" required="true"></form-control>
+                <textarea name="desc" value.bind="entity.desc" cols="30" rows="10"></textarea>
+                <slot></slot>
+            </form>
+        </div>
+    </section>
+</template>
