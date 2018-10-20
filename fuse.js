@@ -56,7 +56,7 @@ let run = (production) => {
     fuse.register('jquery-nicescroll', {
       homeDir: 'node_modules/jquery.nicescroll/dist',
       main: 'jquery.nicescroll.min.js',
-      instructions: '+jquery.nicescroll.min.js +zoomico.png'
+      instructions: '+zoomico.png'
     });
 
     fuse.register('socket-io-client', {
